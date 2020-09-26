@@ -1,5 +1,3 @@
-local domain = os.getenv("DOMAIN")
-
 contact_info = {
   abuse = { os.getenv("SERVER_CONTACT_INFO_ABUSE") };
   admin = { os.getenv("SERVER_CONTACT_INFO_ADMIN") };

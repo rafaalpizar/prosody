@@ -4,6 +4,7 @@
 
 * Made 04-server_contact_info.cfg.lua configurable with ENV variables. Fixes [#4](https://github.com/SaraSmiseth/prosody/issues/4).
 * Made 03-e2e-policy.cfg.lua configurable with ENV variables. Fixes [#9](https://github.com/SaraSmiseth/prosody/issues/9).
+* Added E2E_POLICY_WHITELIST ENV variable to configure e2e_policy_whitelist. Fixes [#10](https://github.com/SaraSmiseth/prosody/issues/10).
 
 ## v1.1.1
 

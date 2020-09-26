@@ -38,7 +38,6 @@ While Conversations got everything set-up out-of-the-box, Gajim was used with th
     - [Configuration](#configuration)
       - [Environment variables](#environment-variables)
       - [DNS](#dns)
-      - [server_contact_info](#server_contact_info)
     - [Extend](#extend)
     - [Upgrade](#upgrade)
   - [Test your server](#test-your-server)
@@ -217,20 +216,6 @@ You need these DNS record pointing to your server:
 * A SRV record for _xmpps-client._tcp.domain.tld for port 5223.
 
 where domain.tld is the environment variable DOMAIN.
-
-#### server_contact_info
-
-This module lets you advertise various contact addresses for your XMPP service via XEP-0157.
-It is configured for the following contacts:
-
-* abuse
-* admin
-* feedback
-* sales
-* security
-* support
-
-You can change them in [05-server_contact_info.cfg.lua](./conf.d/04-server_contact_info.cfg.lua).
 
 ### Extend
 

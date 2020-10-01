@@ -17,8 +17,9 @@ RUN apt-get update \
 
 ENV PROSODY_VERSION 0.11.7
 ENV PROSODY_DOWNLOAD_URL https://prosody.im/downloads/source/prosody-${PROSODY_VERSION}.tar.gz
-ENV PROSODY_DOWNLOAD_SHA1 425e1c7ca37464b31711da8eb4a4c9444a70360f
-ENV LUAROCKS_VERSION 3.3.1
+ENV PROSODY_DOWNLOAD_SHA256 28ffc07653485cb63e22b387d3ea4825ee2baaee0c5827de4d6053a35b1c8747
+ENV LUAROCKS_VERSION 3.4.0
+ENV LUAROCKS_SHA256 62ce5826f0eeeb760d884ea8330cd1552b5d432138b8bade0fa72f35badd02d0
 
 RUN buildDeps='gcc git libc6-dev libidn11-dev liblua5.2-dev libsqlite3-dev libssl-dev make unzip' \
  && set -x \
@@ -26,7 +27,7 @@ RUN buildDeps='gcc git libc6-dev libidn11-dev liblua5.2-dev libsqlite3-dev libss
  && rm -rf /var/lib/apt/lists/* \
  \
  && wget -O prosody.tar.gz "${PROSODY_DOWNLOAD_URL}" \
- && echo "${PROSODY_DOWNLOAD_SHA1} *prosody.tar.gz" | sha1sum -c - \
+ && echo "${PROSODY_DOWNLOAD_SHA256} *prosody.tar.gz" | sha256sum -c - \
  && mkdir -p /usr/src/prosody \
  && tar -xzf prosody.tar.gz -C /usr/src/prosody --strip-components=1 \
  && rm prosody.tar.gz \
@@ -38,6 +39,7 @@ RUN buildDeps='gcc git libc6-dev libidn11-dev liblua5.2-dev libsqlite3-dev libss
  && mkdir /usr/src/luarocks \
  && cd /usr/src/luarocks \
  && wget https://luarocks.org/releases/luarocks-${LUAROCKS_VERSION}.tar.gz \
+ && echo "${LUAROCKS_SHA256} luarocks-${LUAROCKS_VERSION}.tar.gz" | sha256sum -c - \
  && tar zxpf luarocks-${LUAROCKS_VERSION}.tar.gz \
  && cd luarocks-${LUAROCKS_VERSION} \
  && ./configure \

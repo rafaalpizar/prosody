@@ -7,6 +7,8 @@
 * Added E2E_POLICY_WHITELIST ENV variable to configure e2e_policy_whitelist. Fixes [#10](https://github.com/SaraSmiseth/prosody/issues/10).
 * Cherry picked [commit](https://github.com/zipizap/prosody/commit/fa13a990a1b87745ae5f5fe8297cb0669f9e8779) from [zipizap/prosody](https://github.com/zipizap/prosody) which fixes a bug with env-vars not beeing initialized.
 * Updated to Prosody version [0.11.7](https://blog.prosody.im/prosody-0.11.7-released/).
+* Changed hashing of downloaded packages in Dockerfile to sha256.
+* Updated luarocks to version 3.4.0.
 
 ## v1.1.1
 

@@ -35,5 +35,4 @@ if [ -z "$DOMAIN" ]; then
   exit 1
 fi
 
-
 exec "$@"

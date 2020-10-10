@@ -2,7 +2,8 @@
 
 ## Unreleased
 
-* Nothing
+* Fixed using list ENV variables with multiple values
+* Set pidfile in prosody.cfg.lua
 
 ## v1.1.2
 

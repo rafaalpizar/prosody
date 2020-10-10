@@ -1,7 +1,11 @@
 -- see example config at https://hg.prosody.im/0.9/file/0.9.10/prosody.cfg.lua.dist
 -- easily extendable by putting into different config files within conf.d folder
 
-admins = { os.getenv("PROSODY_ADMINS") };
+local stringy = require "stringy" 
+
+admins = stringy.split(os.getenv("PROSODY_ADMINS"), ", ");
+
+pidfile = "/var/run/prosody/prosody.pid"
 
 use_libevent = true; -- improves performance
 

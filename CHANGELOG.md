@@ -2,8 +2,16 @@
 
 ## Unreleased
 
-* Fixed using list ENV variables with multiple values
-* Set pidfile in prosody.cfg.lua
+## v1.1.3
+
+### New features
+
+* Set pidfile in prosody.cfg.lua.
+* Created a tests folder which contains pytest and bats tests.
+
+### Bug fixes
+
+* Fixed using list ENV variables with multiple values.
 
 ## v1.1.2
 

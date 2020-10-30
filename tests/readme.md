@@ -1,5 +1,8 @@
 # Tests
 
+Pytest is used to login and send messages to other accounts.
+Bats is used to check the log for debug messages.
+
 ## Dependencies
 
 * docker

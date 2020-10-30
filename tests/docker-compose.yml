@@ -1,0 +1,24 @@
+version: '3.7'
+
+services:
+  prosody:
+    image: prosody
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
+      - "5222:5222"
+      - "5223:5223"
+      - "5269:5269"
+      - "5281:5281"
+    environment:
+      DOMAIN: localhost
+      E2E_POLICY_WHITELIST: "admin@localhost, user1@localhost"
+      LOG_LEVEL: debug
+      PROSODY_ADMINS: "admin@localhost, admin2@localhost"
+    extra_hosts:
+      - "conference.localhost:127.0.0.1"
+      - "pubsub.localhost:127.0.0.1"
+      - "proxy.localhost:127.0.0.1"
+      - "upload.localhost:127.0.0.1"
+    volumes:
+      - ./certs:/usr/local/etc/prosody/certs

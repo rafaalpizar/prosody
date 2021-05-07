@@ -27,13 +27,15 @@ RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       libevent-dev `# this is no build dependency, but needed for luaevent` \
       libidn11 \
+      libpq-dev \
+      libsqlite3-0 \
       lua5.2 \
       lua-bitop \
+      lua-dbi-mysql \
       lua-expat \
       lua-filesystem \
       lua-socket \
       lua-sec \
-      sqlite3 \
       wget \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
@@ -65,6 +67,8 @@ RUN buildDeps='gcc git libc6-dev libidn11-dev liblua5.2-dev libsqlite3-dev libss
  \
  && luarocks install luaevent \
  && luarocks install luadbi \
+ `#&& luarocks install luadbi-mysql MYSQL_INCDIR=/usr/include/mariadb/` \
+ && luarocks install luadbi-postgresql POSTGRES_INCDIR=/usr/include/postgresql/ \
  && luarocks install luadbi-sqlite3 \
  && luarocks install stringy \
  \
@@ -85,7 +89,7 @@ ENV __FLUSH_LOG yes
 VOLUME ["/usr/local/var/lib/prosody"]
 
 COPY prosody.cfg.lua /usr/local/etc/prosody/prosody.cfg.lua
-COPY docker-entrypoint.sh /entrypoint.sh
+COPY docker-entrypoint.bash /entrypoint.bash
 COPY conf.d/*.cfg.lua /usr/local/etc/prosody/conf.d/
 
 COPY *.bash /usr/local/bin/
@@ -106,6 +110,6 @@ RUN download-prosody-modules.bash \
 
 USER prosody
 
-ENTRYPOINT ["/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.bash"]
 CMD ["prosody", "-F"]
 

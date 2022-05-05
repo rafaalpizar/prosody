@@ -4,11 +4,11 @@ ARG BUILD_DATE
 ARG VCS_REF
 ARG VERSION
 
-ARG LUAROCKS_VERSION=3.8.0
-ARG PROSODY_VERSION=0.11.13
+ARG LUAROCKS_VERSION=3.9.0
+ARG PROSODY_VERSION=0.12.0
 
-ARG LUAROCKS_SHA256=56ab9b90f5acbc42eb7a94cf482e6c058a63e8a1effdf572b8b2a6323a06d923
-ARG PROSODY_DOWNLOAD_SHA256=39c61b346a09b5125b604cb969e14206cbbcb86c81156ffc6ba2d62527cf0432
+ARG LUAROCKS_SHA256=5e840f0224891de96be4139e9475d3b1de7af3a32b95c1bdf05394563c60175f
+ARG PROSODY_DOWNLOAD_SHA256=752ff32015dac565fc3417c2196af268971c358ee066e51f5d912413580d889a
 
 LABEL luarocks.version="${LUAROCKS_VERSION}"
 LABEL org.opencontainers.image.authors="Sara Smiseth"
@@ -26,6 +26,7 @@ LABEL prosody.version="${PROSODY_VERSION}"
 RUN apt-get update \
  && DEBIAN_FRONTEND=noninteractive apt-get install -y \
       libevent-dev `# this is no build dependency, but needed for luaevent` \
+      libicu67 \
       libidn11 \
       libpq-dev \
       libsqlite3-0 \
@@ -36,11 +37,12 @@ RUN apt-get update \
       lua-filesystem \
       lua-socket \
       lua-sec \
+      lua-unbound \
       wget \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
-RUN buildDeps='gcc git libc6-dev libidn11-dev liblua5.2-dev libsqlite3-dev libssl-dev make unzip' \
+RUN buildDeps='gcc git libc6-dev libidn11-dev liblua5.2-dev libsqlite3-dev libssl-dev libicu-dev make unzip' \
  && set -x \
  && apt-get update && apt-get install -y $buildDeps --no-install-recommends \
  && rm -rf /var/lib/apt/lists/* \

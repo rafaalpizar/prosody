@@ -84,8 +84,8 @@ RUN groupadd -r prosody \
  && chown prosody:prosody /usr/local/var/lib/prosody
 
 # Log destination
-RUN mkdir -p /usr/local/var/lib/prosody/logs
- && chown prosody:prosody /usr/local/var/lib/prosody/logs
+RUN mkdir -p /usr/local/var/lib/prosody/logs \
+ && chown prosody:prosody /usr/local/var/lib/prosody/logs \
  && chmod o+rx /usr/local/var/lib/prosody/logs
 
 RUN mkdir -p /var/run/prosody/ \

@@ -88,7 +88,7 @@ RUN mkdir -p /var/run/prosody/ \
 
 # Log destination
 RUN mkdir -p /usr/local/var/lib/prosody_logs \
- && chown prosody:prosody /usr/local/var/lib/prosody/logs \
+ && chown prosody:prosody /usr/local/var/lib/prosody_logs \
  && chmod o+rx /usr/local/var/lib/prosody_logs
 
 # https://github.com/prosody/prosody-docker/issues/25

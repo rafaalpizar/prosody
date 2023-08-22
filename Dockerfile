@@ -83,11 +83,6 @@ RUN groupadd -r prosody \
  && useradd -r -g prosody prosody \
  && chown prosody:prosody /usr/local/var/lib/prosody
 
-# Log destination
-RUN mkdir -p /usr/local/var/lib/prosody/logs \
- && chown prosody:prosody /usr/local/var/lib/prosody/logs \
- && chmod o+rx /usr/local/var/lib/prosody/logs
-
 RUN mkdir -p /var/run/prosody/ \
  && chown prosody:prosody /var/run/prosody/
 
@@ -115,6 +110,11 @@ RUN download-prosody-modules.bash \
         http_upload `# file sharing (XEP-0363)` \
         vcard_muc `# XEP-0153: vCard-Based Avatar (MUC)` \
  && rm -rf "/usr/src/prosody-modules"
+
+# Log destination
+RUN mkdir -p /usr/local/var/lib/prosody/logs \
+ && chown prosody:prosody /usr/local/var/lib/prosody/logs \
+ && chmod o+rx /usr/local/var/lib/prosody/logs
 
 USER prosody
 

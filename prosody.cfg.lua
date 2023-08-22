@@ -29,10 +29,10 @@ ldap_admin_filter = os.getenv("LDAP_ADMIN_FILTER") or "";
 
 log = {
     -- Log all error messages to prosody.err
-    {levels = {min = "error"}, to = "file", filename = "/usr/local/var/lib/prosody/logs/prosody.err"};
+    {levels = {min = "error"}, to = "file", filename = "/usr/local/var/lib/prosody_logs/prosody.err"};
     -- Log everything of level "info" and higher (that is, all except "debug" messages)
     -- to prosody.log
-    {levels = {min = os.getenv("LOG_LEVEL")}, to = "file", filename = "/usr/local/var/lib/prosody/logs/prosody.log"};
+    {levels = {min = os.getenv("LOG_LEVEL")}, to = "file", filename = "/usr/local/var/lib/prosody_logs/prosody.log"};
 };
 
 Include "conf.d/*.cfg.lua";

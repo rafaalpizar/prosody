@@ -86,10 +86,16 @@ RUN groupadd -r prosody \
 RUN mkdir -p /var/run/prosody/ \
  && chown prosody:prosody /var/run/prosody/
 
+# Log destination
+RUN mkdir -p /usr/local/var/lib/prosody_logs \
+ && chown prosody:prosody /usr/local/var/lib/prosody/logs \
+ && chmod o+rx /usr/local/var/lib/prosody_logs
+
 # https://github.com/prosody/prosody-docker/issues/25
 ENV __FLUSH_LOG yes
 
 VOLUME ["/usr/local/var/lib/prosody"]
+VOLUME ["/usr/local/var/lib/prosody_logs"]
 
 COPY prosody.cfg.lua /usr/local/etc/prosody/prosody.cfg.lua
 COPY docker-entrypoint.bash /entrypoint.bash
@@ -110,11 +116,6 @@ RUN download-prosody-modules.bash \
         http_upload `# file sharing (XEP-0363)` \
         vcard_muc `# XEP-0153: vCard-Based Avatar (MUC)` \
  && rm -rf "/usr/src/prosody-modules"
-
-# Log destination
-RUN mkdir -p /usr/local/var/lib/prosody/logs \
- && chown prosody:prosody /usr/local/var/lib/prosody/logs \
- && chmod o+rx /usr/local/var/lib/prosody/logs
 
 USER prosody
 

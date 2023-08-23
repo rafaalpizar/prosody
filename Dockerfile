@@ -113,7 +113,6 @@ RUN download-prosody-modules.bash \
         filter_chatstates `# disable "X is typing" type messages` \
         smacks `# stream management (XEP-0198)` \
         throttle_presence `# presence throttling in CSI` \
-        http_upload `# file sharing (XEP-0363)` \
         vcard_muc `# XEP-0153: vCard-Based Avatar (MUC)` \
         log_auth `# enables logging of the IP address in a failed authentication` \
  && rm -rf "/usr/src/prosody-modules"

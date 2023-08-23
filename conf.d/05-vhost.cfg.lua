@@ -22,8 +22,12 @@ https_ssl = {
 VirtualHost (domain)
 
 -- Set up a http file upload because proxy65 is not working in muc
-Component (domain_http_upload) "http_upload"
-	http_upload_expire_after = 60 * 60 * 24 * 7 -- a week in seconds
+Component (domain_http_upload) "http_file_share"
+	  http_file_share_expires_after = 60 * 60 * 24 * 7 -- a week in seconds
+	  http_file_share_size_limit = 150*1024*1024 -- 150 MiB
+	  http_file_share_daily_quota = 200*1024*1024 -- 200 MiB per day per user
+	  http_file_share_global_quota = 5*1024*1024*1024 -- 5 GiB total
+	  http_file_share_allowed_file_types = { "*/*" } -- Allow all file types
 
 Component (domain_muc) "muc"
 	name = "Prosody Chatrooms"

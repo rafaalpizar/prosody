@@ -27,7 +27,7 @@ Component (domain_http_upload) "http_file_share"
 	  http_file_share_size_limit = 150*1024*1024 -- 150 MiB
 	  http_file_share_daily_quota = 200*1024*1024 -- 200 MiB per day per user
 	  http_file_share_global_quota = 5*1024*1024*1024 -- 5 GiB total
-	  http_file_share_allowed_file_types = { "*/*" } -- Allow all file types
+	  http_file_share_allowed_file_types = {"image/*","video/*","audio/*","text/*","application/*","*/*"}
 
 Component (domain_muc) "muc"
 	name = "Prosody Chatrooms"

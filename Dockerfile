@@ -104,7 +104,6 @@ COPY *.bash /usr/local/bin/
 
 RUN download-prosody-modules.bash \
  && docker-prosody-module-install.bash \
-        bookmarks `# XEP-0411: Bookmarks Conversion` \
         carbons `# message carbons (XEP-0280)` \
         cloud_notify `# XEP-0357: Push Notifications` \
         csi `# client state indication (XEP-0352)` \
